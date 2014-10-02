@@ -16,8 +16,9 @@
  */
 package io.nuun.plugin.cli;
 
-import io.nuun.kernel.core.Kernel;
-
+import static io.nuun.kernel.core.NuunCore.createKernel;
+import static io.nuun.kernel.core.NuunCore.newKernelConfiguration;
+import io.nuun.kernel.api.Kernel;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -41,9 +42,9 @@ public class NuunCliService
     {
         int returnCode = 0;
     	
-		if (kernelStart(args)) 
+		if (kernelStart(args))
 		{
-			if (callable != null) 
+			if (callable != null)
 			{
 				kernel.getMainInjector().injectMembers(callable);
 				returnCode = callable.call();
@@ -62,17 +63,17 @@ public class NuunCliService
     {
     	Future<Integer> future = null;
     	
-    	if (kernelStart(args)) 
+    	if (kernelStart(args))
     	{
-    		if (callable != null) 
+    		if (callable != null)
     		{
     			kernel.getMainInjector().injectMembers(callable);
     			
     			ExecutorService newSingleThreadExecutorService = Executors.newSingleThreadExecutor();
     			
-				future = newSingleThreadExecutorService.submit(callable); 
+				future = newSingleThreadExecutorService.submit(callable);
     		}
-    	} 
+    	}
     	else
     	{
 			
@@ -82,9 +83,15 @@ public class NuunCliService
     }
 
 	private boolean kernelStart(String[] args) {
-		if (kernel == null)		
+		if (kernel == null)
 		{
-			kernel = Kernel.createKernel().withContainerContext(args).build();
+	        kernel = createKernel(
+	                //
+	                newKernelConfiguration() //
+	                    .containerContext(args)
+	                );
+		    
+
 			kernel.init();
 			kernel.start();
 			

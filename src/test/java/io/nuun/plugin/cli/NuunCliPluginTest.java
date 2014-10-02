@@ -17,7 +17,7 @@
 package io.nuun.plugin.cli;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import io.nuun.kernel.core.Kernel;
+import io.nuun.kernel.api.Kernel;
 import io.nuun.plugin.cli.samples.Holder;
 
 import java.util.Map;
@@ -46,13 +46,13 @@ public class NuunCliPluginTest
     {
         nuunCliService = new NuunCliService();
 
-        String[] argsStrings = new String[] { 
-                "-o1" , "cli1" , //  
-                "--option2" , "cli2" , // 
+        String[] argsStrings = new String[] {
+                "-o1" , "cli1" , //
+                "--option2" , "cli2" , //
                 "-o3" ,  //
-                "--option4" , "1/2/3" , // 
-                "-o5" , "cli5" , //  
-                "arg1" , "arg2" // 
+                "--option4" , "1/2/3" , //
+                "-o5" , "cli5" , //
+                "arg1" , "arg2" //
         };
         
         nuunCliService.startSync(argsStrings );
@@ -97,7 +97,7 @@ public class NuunCliPluginTest
         Kernel kernel = nuunCliService.getKernel();
         Options globalOptions = kernel.getMainInjector().getInstance(Options.class);
         Map<Class<?>, Options> optionsMap = kernel.getMainInjector().getInstance(Key.get(  new TypeLiteral<Map<Class<?>, Options>> () {} ));
-        Options holdersSpecificsOptions = optionsMap.get(Holder.class); 
+        Options holdersSpecificsOptions = optionsMap.get(Holder.class);
         
         assertThat(globalOptions).isNotNull();
         assertThat(holdersSpecificsOptions.getOptions().size()).isEqualTo(5);
