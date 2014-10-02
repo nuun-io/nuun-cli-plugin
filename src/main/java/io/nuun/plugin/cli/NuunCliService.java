@@ -16,9 +16,11 @@
  */
 package io.nuun.plugin.cli;
 
+
 import static io.nuun.kernel.core.NuunCore.createKernel;
 import static io.nuun.kernel.core.NuunCore.newKernelConfiguration;
 import io.nuun.kernel.api.Kernel;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
