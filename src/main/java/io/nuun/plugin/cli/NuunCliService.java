@@ -26,6 +26,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import com.google.inject.Injector;
+
 /**
  * @author ejemba
  *
@@ -48,7 +50,7 @@ public class NuunCliService
 		{
 			if (callable != null)
 			{
-				kernel.getMainInjector().injectMembers(callable);
+				kernel.getObjectGraph().as(Injector.class).injectMembers(callable);
 				returnCode = callable.call();
 			}
 		}
@@ -69,7 +71,7 @@ public class NuunCliService
     	{
     		if (callable != null)
     		{
-    			kernel.getMainInjector().injectMembers(callable);
+    			kernel.getObjectGraph().as(Injector.class).injectMembers(callable);
     			
     			ExecutorService newSingleThreadExecutorService = Executors.newSingleThreadExecutor();
     			
