@@ -17,6 +17,7 @@
 package io.nuun.plugin.cli;
 
 import io.nuun.kernel.api.assertions.AssertUtils;
+import io.nuun.kernel.api.di.UnitModule;
 import io.nuun.kernel.api.plugin.InitState;
 import io.nuun.kernel.api.plugin.PluginException;
 import io.nuun.kernel.api.plugin.context.InitContext;
@@ -224,7 +225,7 @@ public class NuunCliPlugin extends AbstractPlugin
      * @see org.nuunframework.kernel.plugin.AbstractPlugin#dependencyInjectionDef()
      */
     @Override
-    public Object dependencyInjectionDef()
+    public Object nativeUnitModule()
     {
         return new NuunCliModule(commandLine,this.optionsAggregated, contextualCommandLineMap  , byClassOptions ,bindings);
     }

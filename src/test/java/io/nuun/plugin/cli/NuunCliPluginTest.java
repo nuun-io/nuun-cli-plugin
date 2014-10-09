@@ -71,7 +71,7 @@ public class NuunCliPluginTest
     public void testInjections ()
     {
         Kernel kernel = nuunCliService.getKernel();
-        Holder holder = kernel.getObjectGraph().as(Injector.class).getInstance(Holder.class);
+        Holder holder = kernel.objectGraph().as(Injector.class).getInstance(Holder.class);
         
         assertThat( holder.getOption1() ).isNotNull();
         assertThat( holder.getOption1() ).isEqualTo("cli1");
@@ -96,8 +96,8 @@ public class NuunCliPluginTest
     public void testOptions()
     {
         Kernel kernel = nuunCliService.getKernel();
-        Options globalOptions = kernel.getObjectGraph().as(Injector.class).getInstance(Options.class);
-        Map<Class<?>, Options> optionsMap = kernel.getObjectGraph().as(Injector.class).getInstance(Key.get(  new TypeLiteral<Map<Class<?>, Options>> () {} ));
+        Options globalOptions = kernel.objectGraph().as(Injector.class).getInstance(Options.class);
+        Map<Class<?>, Options> optionsMap = kernel.objectGraph().as(Injector.class).getInstance(Key.get(  new TypeLiteral<Map<Class<?>, Options>> () {} ));
         Options holdersSpecificsOptions = optionsMap.get(Holder.class);
         
         assertThat(globalOptions).isNotNull();

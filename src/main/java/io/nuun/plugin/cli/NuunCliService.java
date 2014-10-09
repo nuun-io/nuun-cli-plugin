@@ -50,7 +50,7 @@ public class NuunCliService
 		{
 			if (callable != null)
 			{
-				kernel.getObjectGraph().as(Injector.class).injectMembers(callable);
+				kernel.objectGraph().as(Injector.class).injectMembers(callable);
 				returnCode = callable.call();
 			}
 		}
@@ -71,7 +71,7 @@ public class NuunCliService
     	{
     		if (callable != null)
     		{
-    			kernel.getObjectGraph().as(Injector.class).injectMembers(callable);
+    			kernel.objectGraph().as(Injector.class).injectMembers(callable);
     			
     			ExecutorService newSingleThreadExecutorService = Executors.newSingleThreadExecutor();
     			
