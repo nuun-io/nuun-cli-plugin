@@ -15,7 +15,7 @@
     <name>Nuun IO C.L.I. plugin</name>
 
     <description>
-          This plugin provide the IOC for command line. With it you can handle project with command line options.
+          This plugin provides the IOC for command line. With it you can handle projects with command line options.
     </description>
 
     <inceptionYear>2012</inceptionYear>
