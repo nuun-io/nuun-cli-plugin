@@ -33,7 +33,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
-        <nuun.kernel.version>1.0.M1-SNAPSHOT</nuun.kernel.version>
+        <nuun.kernel.version>1.0.M1</nuun.kernel.version>
     </properties>
 
     <dependencies>
